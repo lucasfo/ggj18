@@ -14,6 +14,7 @@ enum { BROKEN, SADFACE }
 export (int) var hardness = 1
 export (int) var base = 12
 
+export(int) var initialOffset = 0
 export(int) var offset  = 0 # space between balloons
 export(int) var bonusTime = 0 # Time  gained when a balloon is delevery
 export(int) var auraTime = 0	 # Time gained when house is cleared
@@ -46,9 +47,11 @@ func spawnBalloon():
 	var nBalloons = (randi()%(maxBalloons )) +1
 	var balloonType = randi()%2
 	for i in range(0, nBalloons):
-		balloons.append(preload("res://balloon/balloon.tscn").instance())
-		balloons.back().setType(balloonType)
-		add_child(balloons.back())
+		var balloon = preload("res://balloon/balloon.tscn").instance()
+		balloons.append(balloon)
+		balloon.setType(balloonType)
+		add_child(balloon)
+		balloon.set_pos(Vector2(0, initialOffset))
 	print("Spawnei - ", nBalloons)		
 	pass
 

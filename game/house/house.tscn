@@ -12,12 +12,11 @@ angular_damp = 1.0
 script/script = ExtResource( 1 )
 hardness = 1
 base = 12
+initialOffset = 0
 offset = 0
 bonusTime = 0
 auraTime = 0
 maxBalloons = 1
 houseId = 1
-
-[node name="ballons" type="Node2D" parent="."]
 
 
