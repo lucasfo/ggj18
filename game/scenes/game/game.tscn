@@ -23,10 +23,11 @@ texture = ExtResource( 2 )
 
 transform/pos = Vector2( 533.937, 293.097 )
 initialOffset = -100
+houseLeft = 0
 
 [node name="house_e1" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 67.0095, 293.485 )
+transform/pos = Vector2( 41.5247, 294.593 )
 initialOffset = -80
 
 [node name="bar" parent="." instance=ExtResource( 4 )]
@@ -37,14 +38,13 @@ transform/pos = Vector2( 274.594, 66.5807 )
 
 transform/pos = Vector2( 287.023, 304.902 )
 
-[node name="mailbox-sad" parent="." instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 250.218, 309.005 )
-balloon = 0
-
 [node name="mailbox-broken" parent="." instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 324.078, 309.005 )
+transform/pos = Vector2( 250.218, 309.005 )
 balloon = 2
+
+[node name="mailbox-sad" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 324.078, 309.005 )
 
 

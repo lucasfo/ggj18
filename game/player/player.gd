@@ -21,6 +21,12 @@ var colInfo
 var sceneBalloon
 var actualBalloon
 
+### house
+var houseId = 0
+var houseLeft = true
+
+signal drop_balloon
+
 func _ready():
 	set_fixed_process(true)
 	set_process_input(true)
@@ -64,6 +70,10 @@ func _fixed_process(delta):
 		
 	if(balloon != BALLOON.NONE):
 		actualBalloon.setPlayerTypeSide((balloon-1)*2,isLeft)
+		if balloon == BALLOON.BROKEN:
+			actualBalloon.setPlayerTypeSide(2,isLeft)
+		else:
+			actualBalloon.setPlayerTypeSide(0,isLeft)
 	move(movement * playerSpeed * delta)
 	### end MOVEMENT
 	pass
@@ -75,28 +85,36 @@ func on_area_enter(area):
 	else:
 		colType = COLTYPE.HOUSE
 		#colInfo = Vector2(area.houseId, area.houseLeft)
+		houseId = area.houseId
+		houseLeft = area.houseLeft
 
 func on_area_exit(area):
 	colType=COLTYPE.NONE
 	colInfo=-1
+	houseId = 0
+	houseLeft = true
 
 func _input(event):
 	if event.is_action_pressed("interact"):
-		if(balloon != BALLOON.NONE):
-			actualBalloon.queue_free()
-			balloon = BALLOON.NONE
 		if(colType!=COLTYPE.NONE):
 			if(colType==COLTYPE.MAILBOX):
 				actualBalloon = sceneBalloon.instance()
-				print(actualBalloon)
 				actualBalloon.set_pos(Vector2(0,-40))
 				actualBalloon.setPlayerTypeSide(colInfo,isLeft)
 				self.add_child(actualBalloon)
 				if colInfo == 2:
-					balloon = BALLOON.SADFACE
-				else:
 					balloon = BALLOON.BROKEN
+				else:
+					balloon = BALLOON.SADFACE
 
 			elif(colType==COLTYPE.HOUSE and balloon!=BALLOON.NONE):
 				#check houseballon,ownballon
-				pass
+				if balloon == BALLOON.SADFACE:
+					emit_signal("drop_balloon", houseId, houseLeft, 0)
+				elif balloon == BALLOON.BROKEN:
+					emit_signal("drop_balloon", houseId, houseLeft, 2)
+				actualBalloon.queue_free()
+				balloon = BALLOON.NONE
+		elif(balloon != BALLOON.NONE):
+			actualBalloon.queue_free()
+			balloon = BALLOON.NONE

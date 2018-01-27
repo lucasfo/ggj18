@@ -88,6 +88,7 @@ func sendAura():
 	pass
 
 func removeBalloon():
+	print("KSJHKJH")
 	var balloon = balloons.front()
 	remove_child(balloon)
 	balloon.queue_free()
@@ -100,7 +101,7 @@ func removeBalloon():
 
 func receiveBalloon(type):
 	if balloons.size() > 0:
-		if balloons.front().type == type:
+		if checkBalloon(type):
 			removeBalloon()
 			return true
 		else:
@@ -120,4 +121,12 @@ func calcCooldown():
 	cooldown *= 1000
 	cooldown += OS.get_ticks_msec()
 	
-
+func checkBalloon(type):
+	print (balloons.front().type, " ", type)
+	print (balloons.front().type == SMILE && type == SADFACE, " ", balloons.front().type == HEARTH && type == BROKEN)
+	if balloons.front().type == SMILE && type == SADFACE:
+		return true
+	elif balloons.front().type == HEARTH && type == BROKEN:
+		return true
+	else:
+		return false

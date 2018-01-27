@@ -15,7 +15,6 @@ func _ready():
 	pass
 
 func setType(t):
-	print ("BAlloon ", t)
 	type = t
 	setSide(true)
 	pass
@@ -26,8 +25,6 @@ func setSide(isLeft):
 	else:
 		get_node(".").set_frame(type*2)
 
-	print ("Frame ", get_node(".").frame)
-	
 func setPlayerTypeSide(t,isLeft):
 	type = t
 	setSide(isLeft)

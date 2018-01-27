@@ -31,6 +31,7 @@ func _ready():
 		var house = get_node(path)
 		rightHouses.append(house)
 		house.connect("house_end", self, "houseHandler")
+	get_node("Player").connect("drop_balloon", self, "balloonHandler")
 	
 	updateRage()
 
@@ -53,14 +54,26 @@ func houseHandler(houseId, houseLeft, houseScore, houseRage, time, remainingBall
 			houses = rightHouses
 
 		if houseId == 1:
-			houses[2].receiveAura(time)
+			if houses.size() > 1:
+				houses[2].receiveAura(time)
 		elif houseId == 5:
 			houses[4].receiveAura(time)
 		else:
 			houses[houseId -1].receiveAura(time)
-			houses[houseId +1].receiveAura(time)
+			if houses[houseId +1] && houses.size() > houseId:
+				houses[houseId +1].receiveAura(time)
 			
 	pass
+
+func balloonHandler(houseId, houseLeft, balloon):
+	if houseId != 0:
+		var house
+		if houseLeft:
+			house = leftHouses[houseId -1]
+		else:
+			house = rightHouses[houseId -1]
+		house.receiveBalloon(balloon)
+		
 
 func endGame():
 	get_tree().change_scene("res://scenes/dieScene.tscn")
