@@ -31,7 +31,7 @@ func spawnBallon():
 	var nBallons = (randi()%(maxBallons -1)) +1
 	var ballonType = randi()%2
 	for i in range(0, nBallons):
-		ballons.append(preload("res://ballon/ballon.tscn").instance())
+		ballons.append(load("res://ballon/ballon.tscn").instance())
 		ballons.back().setType(ballonType)
 		
 	pass
