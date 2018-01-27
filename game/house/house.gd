@@ -10,7 +10,7 @@ var player
 var ballons
 var timer
 
-enum { HEARTH, SMILE }
+enum { BROKEN, SADFACE }
 
 export(int) var offset # space between ballons
 export(NodePath) var playerPath #  playerPath
@@ -38,8 +38,9 @@ func spawnBallon():
 
 func receiveAura():
 	if active:
-		timer += auraTimer
+		timer += auraTime
 	pass
+
 func sendAura():
 	pass
 
@@ -53,12 +54,12 @@ func removeBallon():
 
 func receiveBallon(type):
 	if ballons.size() > 0:
-		if ballons.front().type == type
+		if ballons.front().type == type:
 			removeBallon()
 			return true
-		else
+		else:
 			return false
-	else
+	else:
 		return false
 	pass
 	

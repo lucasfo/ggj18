@@ -14,6 +14,5 @@ func _ready():
 	# Initialization here
 	pass
 
-fun setType(type):
+func setType(type):
 	get_node(".").frame = type
-	
