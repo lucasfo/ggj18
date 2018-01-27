@@ -15,8 +15,8 @@ base = 12
 initialOffset = 0
 offset = 0
 bonusTime = 0
-auraTime = 0
 maxBalloons = 1
 houseId = 1
+houseLeft = true
 
 
