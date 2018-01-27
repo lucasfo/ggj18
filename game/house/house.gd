@@ -9,7 +9,7 @@ var active
 var balloons
 var timer
 
-enum { BROKEN, SADFACE }
+enum { SADFACE, SMILE, BROKEN, HEARTH }
 
 export (int) var hardness = 1
 export (int) var base = 12
@@ -43,7 +43,6 @@ func _ready():
 
 func _process(delta):
 	var ticks =  OS.get_ticks_msec()
-	print (ticks, " ", cooldown, " ", timer)
 	if cooldown < ticks && not active:
 		active = true
 		spawnBalloon()
@@ -55,9 +54,14 @@ func _process(delta):
 func spawnBalloon():
 	print("SPaw balao")
 	active = true
-	var nBalloons = (randi()%(maxBalloons )) +1
-	var balloonType = randi()%2
 	for i in range(0, nBalloons):
+		var nBalloons = (randi()%(maxBalloons )) +1
+		var balloonType = randi()%2
+		print(balloonType)
+		if balloonType == 0:
+			balloonType = HEARTH
+		else:
+			balloonType = SMILE
 		var balloon = preload("res://balloon/balloon.tscn").instance()
 		balloons.append(balloon)
 		balloon.setType(balloonType)

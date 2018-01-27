@@ -4,7 +4,7 @@ extends Sprite
 # var a = 2
 # var b = "textvar"
 
-enum {BROKEN, SADFACE, HEARTH, SMILE}
+enum {SADFACE, SMILE, BROKEN, HEARTH}
 
 var type = BROKEN
 var side = true
@@ -14,13 +14,16 @@ func _ready():
 	# Initialization here
 	pass
 
-func setType(type):
-	type = type
+func setType(t):
+	print ("BAlloon ", t)
+	type = t
 	setSide(true)
 	pass
 	
 func setSide(isLeft):
 	if isLeft:
-		get_node(".").frame = type*2
+		get_node(".").set_frame(type*2+1)
 	else:
-		get_node(".").frame = type*2 + 1
+		get_node(".").set_frame(type*2)
+
+	print ("Frame ", get_node(".").frame)

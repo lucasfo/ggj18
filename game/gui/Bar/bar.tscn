@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://gui/Bar/bar.gd" type="Script" id=1]
+[ext_resource path="res://gui/Bar/barBack.png" type="Texture" id=2]
+
+[node name="bar" type="Node2D"]
+
+script/script = ExtResource( 1 )
+width = null
+height = null
+
+[node name="front" type="Sprite" parent="."]
+
+[node name="back" type="Sprite" parent="."]
+
+transform/scale = Vector2( 32, 32 )
+texture = ExtResource( 2 )
+
+
