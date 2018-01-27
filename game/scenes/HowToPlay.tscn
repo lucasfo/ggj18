@@ -1,29 +1,18 @@
 [gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://gui/04B_03__.fnt" type="BitmapFont" id=1]
-[ext_resource path="res://scenes/Buttons/BackButton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Buttons/ContinueButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/HowToPlay.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Tutorial/TutorialOne.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Buttons/BackButton.tscn" type="PackedScene" id=3]
 
 [node name="HowToPlay" type="Node2D"]
 
-[node name="Label" type="Label" parent="."]
+script/script = ExtResource( 1 )
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 243.0
-margin/top = 188.0
-margin/right = 343.0
-margin/bottom = 202.0
-custom_fonts/font = ExtResource( 1 )
-text = "How to play"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+[node name="TutorialOne" parent="." instance=ExtResource( 2 )]
 
-[node name="BackButton" parent="." instance=ExtResource( 2 )]
+margin/right = 600.0
+margin/bottom = 450.0
 
-[node name="ContinueButton" parent="." instance=ExtResource( 3 )]
+[node name="BackButton" parent="." instance=ExtResource( 3 )]
 
 
