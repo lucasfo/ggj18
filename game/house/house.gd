@@ -6,34 +6,50 @@ extends Area2D
 #
 
 var active
-var player
-var ballons
+var balloons
 var timer
 
 enum { BROKEN, SADFACE }
 
-export(int) var offset # space between ballons
-export(NodePath) var playerPath #  playerPath
-export(int) var initialTime # House initial timer
-export(int) var bonusTime # Time  gained when a ballon is delevery
-export(int) var auraTime # Time gained when house is cleared
-export(int) var maxBallons # Maximum of ballons possible
+export (int) var hardness = 1
+export (int) var base = 12
+
+export(int) var offset  = 0 # space between balloons
+export(int) var bonusTime = 0 # Time  gained when a balloon is delevery
+export(int) var auraTime = 0	 # Time gained when house is cleared
+export(int) var maxBalloons = 1 # Maximum of balloons possible
+export(int) var houseId = 1
+
+var cooldownMin = 0
+var cooldownMax = 0
+var initialTime = 0
+var score = 0
+var cooldown = 0
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	active = false
-	player = get_node(playerPath)
-	ballons = []
+	active = true
+	adjustHardness(hardness)
+	calcCooldown()
+	set_process(true)
+	balloons = []
 	pass
 
-func spawnBallon():
-	var nBallons = (randi()%(maxBallons -1)) +1
-	var ballonType = randi()%2
-	for i in range(0, nBallons):
-		ballons.append(load("res://ballon/ballon.tscn").instance())
-		ballons.back().setType(ballonType)
-		
+func _process(delta):
+	if cooldown > OS.get_ticks_msec():
+		spawnBalloon()
+		set_process(false)
+
+func spawnBalloon():
+	active = true
+	var nBalloons = (randi()%(maxBalloons )) +1
+	var balloonType = randi()%2
+	for i in range(0, nBalloons):
+		balloons.append(preload("res://balloon/balloon.tscn").instance())
+		balloons.back().setType(balloonType)
+		add_child(balloons.back())
+	print("Spawnei - ", nBalloons)		
 	pass
 
 func receiveAura():
@@ -42,20 +58,23 @@ func receiveAura():
 	pass
 
 func sendAura():
+	set_process(true)
+	calcCooldown()
+	# send aura to neighboors
 	pass
 
-func removeBallon():
-	ballons.pop_front()
+func removeBalloon():
+	balloons.pop_front()
 	timer += bonusTime
-	if ballons.size() == 0:
+	if balloons.size() == 0:
 		active = false
 		sendAura()
 	pass
 
-func receiveBallon(type):
-	if ballons.size() > 0:
-		if ballons.front().type == type:
-			removeBallon()
+func receiveBalloon(type):
+	if balloons.size() > 0:
+		if balloons.front().type == type:
+			removeBalloon()
 			return true
 		else:
 			return false
@@ -63,5 +82,14 @@ func receiveBallon(type):
 		return false
 	pass
 	
+func adjustHardness(hard):
+	hardness = hard
+	initialTime = houseId*base - hardness
+	cooldownMin = initialTime - hardness
+	cooldownMax = int(cooldownMin * 1.5)
 
+func calcCooldown():
+	cooldown = (randi()%(cooldownMax - cooldownMin)) + cooldownMin
+	cooldown += OS.get_ticks_msec()
+	
 
