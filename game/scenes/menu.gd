@@ -1,12 +1,20 @@
 extends Node2D
 
 # Pega o botão amiguinho
-export (NodePath) var button_path
-onready var button = get_node(button_path)
+export (NodePath) var startButtonPath
+export (NodePath) var creditsButtonPath
+onready var startButton = get_node(startButtonPath)
+onready var creditsButton = get_node(creditsButtonPath)
 
 func _ready():
-	button.connect("pressed", self, "on_pressed")
+	startButton.connect("pressed", self, "onStartPressed")
+	creditsButton.connect("pressed", self, "onCreditsPressed")
 	pass
 
-func on_pressed():
-	print("Oi")
+func onStartPressed():
+	print("Start pressed")
+	get_tree().change_scene("res://scenes/cutScene.tscn")
+	
+func onCreditsPressed():
+	print("Credits pressed")
+	get_tree().change_scene("res://scenes/Credits.tscn")

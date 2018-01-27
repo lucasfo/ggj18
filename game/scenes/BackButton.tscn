@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://gui/Back/back.png" type="Texture" id=1]
+[ext_resource path="res://gui/Back/backclick.png" type="Texture" id=2]
+[ext_resource path="res://scenes/BackButton.gd" type="Script" id=3]
+
+[node name="TextureButton" type="TextureButton"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 14.0
+margin/top = 375.0
+margin/right = 142.0
+margin/bottom = 439.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 1 )
+textures/pressed = ExtResource( 2 )
+params/resize_mode = 0
+params/stretch_mode = 0
+script/script = ExtResource( 3 )
+
+

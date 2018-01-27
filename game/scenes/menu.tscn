@@ -1,10 +1,51 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://scenes/menu.gd" type="Script" id=1]
+[ext_resource path="res://gui/Start Game/start.png" type="Texture" id=2]
+[ext_resource path="res://gui/Start Game/startclick.png" type="Texture" id=3]
+[ext_resource path="res://gui/Credits/credits.png" type="Texture" id=4]
+[ext_resource path="res://gui/Credits/creditsclick.png" type="Texture" id=5]
 
 [node name="Menu" type="Node2D"]
 
 script/script = ExtResource( 1 )
-button_path = NodePath("StartButton")
+startButtonPath = NodePath("Start Button")
+creditsButtonPath = NodePath("Credits Button")
+
+[node name="Start Button" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 226.0
+margin/top = 205.0
+margin/right = 354.0
+margin/bottom = 269.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 2 )
+textures/pressed = ExtResource( 3 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Credits Button" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 226.0
+margin/top = 285.0
+margin/right = 354.0
+margin/bottom = 349.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+textures/pressed = ExtResource( 5 )
+params/resize_mode = 0
+params/stretch_mode = 0
 
 
