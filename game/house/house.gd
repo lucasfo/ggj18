@@ -54,10 +54,9 @@ func _process(delta):
 func spawnBalloon():
 	print("SPaw balao")
 	active = true
+	var nBalloons = (randi()%(maxBalloons )) +1
 	for i in range(0, nBalloons):
-		var nBalloons = (randi()%(maxBalloons )) +1
 		var balloonType = randi()%2
-		print(balloonType)
 		if balloonType == 0:
 			balloonType = HEARTH
 		else:
@@ -115,7 +114,6 @@ func adjustHardness(hard):
 	initialTime = houseId*base - hardness
 	cooldownMin = initialTime - hardness
 	cooldownMax = int(cooldownMin * 1.5)
-	print (initialTime, " ", cooldownMin, " ", cooldownMax)
 
 func calcCooldown():
 	cooldown = (randi()%(cooldownMax - cooldownMin)) + cooldownMin

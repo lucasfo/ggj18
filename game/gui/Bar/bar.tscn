@@ -6,14 +6,13 @@
 [node name="bar" type="Node2D"]
 
 script/script = ExtResource( 1 )
-width = null
-height = null
+width = 32
+height = 32
 
 [node name="front" type="Sprite" parent="."]
 
 [node name="back" type="Sprite" parent="."]
 
-transform/scale = Vector2( 32, 32 )
 texture = ExtResource( 2 )
 
 

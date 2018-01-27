@@ -24,12 +24,15 @@ func _ready():
 	leftHouses = []
 	rightHouses = []
 	for path in leftHousesPath:
-		leftHouses.append(get_node(path))
+		var house = get_node(path)
+		leftHouses.append(house)
+		house.connect("house_end", self, "houseHandler")
 	for path in rightHousesPath:
-		rightHouses.append(get_node(path))
+		var house = get_node(path)
+		rightHouses.append(house)
+		house.connect("house_end", self, "houseHandler")
 	
-	var thisNode = get_node(".")
-	thisNode.connect("house_end", self, "houseHandler")
+	updateRage()
 
 	score = 0
 	rage = 0
@@ -38,6 +41,7 @@ func _ready():
 func houseHandler(houseId, houseLeft, houseScore, houseRage, time, remainingBalloons):
 	if remainingBalloons > 0:
 		rage += houseRage
+		updateRage()
 		if rage >= 100:
 			endGame()
 	else:
@@ -61,3 +65,6 @@ func houseHandler(houseId, houseLeft, houseScore, houseRage, time, remainingBall
 func endGame():
 	print("endGame")
 	pass
+
+func updateRage():
+	get_node("bar").updateRage(rage)
