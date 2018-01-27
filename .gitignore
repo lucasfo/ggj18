@@ -1,0 +1,6 @@
+*.fscache
+*.swp
+*.swo
+*.out
+*.in
+*.tmp
