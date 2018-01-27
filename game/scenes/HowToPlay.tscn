@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/Buttons/BackButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Buttons/ContinueButton.tscn" type="PackedScene" id=3]
 
-[node name="CutScene" type="Node2D"]
+[node name="HowToPlay" type="Node2D"]
 
 [node name="Label" type="Label" parent="."]
 
@@ -12,14 +12,12 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 220.0
-margin/top = 190.0
-margin/right = 353.0
-margin/bottom = 227.0
+margin/left = 243.0
+margin/top = 188.0
+margin/right = 343.0
+margin/bottom = 202.0
 custom_fonts/font = ExtResource( 1 )
-text = "Some nice text"
-align = 1
-valign = 1
+text = "How to play"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
