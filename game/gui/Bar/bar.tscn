@@ -1,18 +1,24 @@
 [gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://gui/Bar/bar.gd" type="Script" id=1]
-[ext_resource path="res://gui/Bar/barBack.png" type="Texture" id=2]
+[ext_resource path="res://gui/Bar/life-bar.png" type="Texture" id=2]
 
 [node name="bar" type="Node2D"]
 
 script/script = ExtResource( 1 )
-width = 32
-height = 32
 
 [node name="front" type="Sprite" parent="."]
 
+texture = ExtResource( 2 )
+hframes = 2
+
 [node name="back" type="Sprite" parent="."]
 
+transform/pos = Vector2( -58.5368, 0.440125 )
 texture = ExtResource( 2 )
+hframes = 2
+frame = 1
+region = true
+region_rect = Rect2( 128, 0, 10, 20 )
 
 

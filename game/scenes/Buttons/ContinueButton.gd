@@ -10,3 +10,5 @@ func continueButtonPressed():
 		get_tree().change_scene("res://scenes/HowToPlay.tscn")
 	elif(sceneName == "HowToPlay"):
 		get_tree().change_scene("res://scenes/game/game.tscn")
+	elif(sceneName == "DieScene"):
+			get_tree().change_scene("res://scenes/menu.tscn")

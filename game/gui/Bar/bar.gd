@@ -4,16 +4,18 @@ extends Node2D
 # var a = 2
 # var b = "textvar"
 
-export(int) var width = 32
-export(int) var height = 32
+var width = 128
+var height = 20
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	get_node("back").scale(Vector2(width, height))
+	get_node("back").set_region_rect(Rect2(128,0,0, height))
+	get_node("back").set_pos(Vector2(-64,0))
 	pass
 	
 func updateRage(rage):
-	var newWidth = int((rage/100.0)*width)
-	get_node("back").set_global_scale(Vector2(newWidth, height))
+	var newWidth = int(rage*width/100.0)
+	get_node("back").set_region_rect(Rect2(128,0,newWidth, height))
+	get_node("back").set_pos(Vector2(-64 + newWidth/2,0))
 	pass

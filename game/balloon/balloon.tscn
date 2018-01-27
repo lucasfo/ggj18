@@ -8,6 +8,7 @@
 texture = ExtResource( 1 )
 vframes = 2
 hframes = 4
+frame = 7
 script/script = ExtResource( 2 )
 
 

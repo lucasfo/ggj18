@@ -90,9 +90,12 @@ func _input(event):
 				actualBalloon = sceneBalloon.instance()
 				print(actualBalloon)
 				actualBalloon.set_pos(Vector2(0,-40))
-				actualBalloon.setPlayerTypeSide((colInfo-1)*2,isLeft)
+				actualBalloon.setPlayerTypeSide(colInfo,isLeft)
 				self.add_child(actualBalloon)
-				balloon = colInfo
+				if colInfo == 2:
+					balloon = BALLOON.SADFACE
+				else:
+					balloon = BALLOON.BROKEN
 
 			elif(colType==COLTYPE.HOUSE and balloon!=BALLOON.NONE):
 				#check houseballon,ownballon

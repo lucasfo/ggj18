@@ -63,7 +63,7 @@ func houseHandler(houseId, houseLeft, houseScore, houseRage, time, remainingBall
 	pass
 
 func endGame():
-	print("endGame")
+	get_tree().change_scene("res://scenes/dieScene.tscn")
 	pass
 
 func updateRage():
