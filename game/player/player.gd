@@ -8,9 +8,10 @@ var animId
 export var playerSpeed = 500
 var isHiding = false
 var isHidingTime
+var isLeft 
 
 ### interactions
-enum BALLOON{NONE,SADFACE, BROKEN}
+enum BALLOON{NONE, BROKEN,SADFACE}
 var balloon = BALLOON.NONE
 enum COLTYPE{NONE, HOUSE ,MAILBOX}
 var colType = COLTYPE.NONE
@@ -44,28 +45,33 @@ func _fixed_process(delta):
 		movement.x += -1
 	if( Input.is_action_pressed("ui_down") and !isHiding):
 		isHidingTime = OS.get_ticks_msec()
+		isHiding=true
 		get_node("AnimationPlayer").play("Idle")
 		move(Vector2(0,1)*50)
 		return
 		
 	if(movement.x==1 and animId!=ANIM.walkr):
 		get_node("AnimationPlayer").play("WalkR")
+		isLeft=false
 		animId=ANIM.walkr
 	elif(movement.x==-1 and animId!=ANIM.walkl):
 		get_node("AnimationPlayer").play("WalkL")
 		animId=ANIM.walkl
+		isLeft=true
 	elif(movement.x==0 and animId!=ANIM.idle):
 		get_node("AnimationPlayer").play("Idle")
 		animId=ANIM.idle
 		
+	if(balloon != BALLOON.NONE):
+		actualBalloon.setPlayerTypeSide((balloon-1)*2,isLeft)
 	move(movement * playerSpeed * delta)
 	### end MOVEMENT
 	pass
 
 func on_area_enter(area):
-	if(area.houseId==0):
+	if(area.houseId == 0):
 		colType = COLTYPE.MAILBOX
-		#colInfo = area.ballon
+		colInfo = area.balloon
 	else:
 		colType = COLTYPE.HOUSE
 		#colInfo = Vector2(area.houseId, area.houseLeft)
@@ -75,19 +81,19 @@ func on_area_exit(area):
 	colInfo=-1
 
 func _input(event):
-	if event.is_action("interact"):
+	if event.is_action_pressed("interact"):
 		if(balloon != BALLOON.NONE):
-				actualBalloon.queue_free()
-				balloon = BALLOON.NONE
+			actualBalloon.queue_free()
+			balloon = BALLOON.NONE
 		if(colType!=COLTYPE.NONE):
 			if(colType==COLTYPE.MAILBOX):
 				actualBalloon = sceneBalloon.instance()
-				actualBalloon.set_pos(Vector2(0,48))
+				print(actualBalloon)
+				actualBalloon.set_pos(Vector2(0,-40))
+				actualBalloon.setPlayerTypeSide((colInfo-1)*2,isLeft)
 				self.add_child(actualBalloon)
-				if(colInfo==0):
-					balloon = BALLOON.BROKEN
-				if(colInfo==1):
-					balloon = BALLOON.SADFACE
+				balloon = colInfo
+
 			elif(colType==COLTYPE.HOUSE and balloon!=BALLOON.NONE):
 				#check houseballon,ownballon
 				pass
