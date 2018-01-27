@@ -54,8 +54,8 @@ func _process(delta):
 func spawnBalloon():
 	print("SPaw balao")
 	active = true
+	var nBalloons = (randi()%(maxBalloons )) +1
 	for i in range(0, nBalloons):
-		var nBalloons = (randi()%(maxBalloons )) +1
 		var balloonType = randi()%2
 		print(balloonType)
 		if balloonType == 0:

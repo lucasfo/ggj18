@@ -9,4 +9,4 @@ func continueButtonPressed():
 	if(sceneName == "CutScene"):
 		get_tree().change_scene("res://scenes/HowToPlay.tscn")
 	elif(sceneName == "HowToPlay"):
-		print("Init game")
+		get_tree().change_scene("res://scenes/game/game.tscn")

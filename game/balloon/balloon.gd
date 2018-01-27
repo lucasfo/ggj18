@@ -27,3 +27,8 @@ func setSide(isLeft):
 		get_node(".").set_frame(type*2)
 
 	print ("Frame ", get_node(".").frame)
+	
+func setPlayerTypeSide(t,isLeft):
+	type = t
+	setSide(isLeft)
+	pass

@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://scenes/game/game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/game/full_bg.png" type="Texture" id=2]
 [ext_resource path="res://house/house.tscn" type="PackedScene" id=3]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/game/mailbox.gd" type="Script" id=4]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 17.9068
+height = 17.4631
 
 [node name="game" type="Node2D"]
 
@@ -17,19 +24,68 @@ periodSpawn = 0
 transform/pos = Vector2( 300, 225 )
 texture = ExtResource( 2 )
 
-[node name="house_d1" parent="." instance=ExtResource( 3 )]
+[node name="house_d1" parent="BG" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 533.937, 293.097 )
+transform/pos = Vector2( 233.937, 68.097 )
 initialOffset = -100
 
-[node name="house_e1" parent="." instance=ExtResource( 3 )]
+[node name="house_e1" parent="BG" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 67.0095, 293.485 )
+transform/pos = Vector2( -232.991, 68.485 )
 initialOffset = -80
 houseId = 2
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
+[node name="mailbox0" type="Area2D" parent="BG"]
+
+transform/pos = Vector2( -48.2064, 85.8372 )
+transform/scale = Vector2( 0.365518, 0.396896 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 4 )
+balloon = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/mailbox0"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="mailbox1" type="Area2D" parent="BG"]
+
+transform/pos = Vector2( 24.9852, 85.6226 )
+transform/scale = Vector2( 0.365518, 0.396896 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 4 )
+balloon = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/mailbox1"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 292.408, 307.883 )
 playerSpeed = 200
+
 
