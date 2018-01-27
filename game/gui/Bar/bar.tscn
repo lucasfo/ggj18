@@ -16,6 +16,7 @@ hframes = 2
 
 transform/pos = Vector2( -58.5368, 0.440125 )
 texture = ExtResource( 2 )
+flip_h = true
 hframes = 2
 frame = 1
 region = true

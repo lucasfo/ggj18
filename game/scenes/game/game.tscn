@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://scenes/game/game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/game/full_bg.png" type="Texture" id=2]
@@ -6,9 +6,14 @@
 [ext_resource path="res://gui/Bar/bar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://mailbox/mailbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://parallax/background.png" type="Texture" id=7]
+[ext_resource path="res://parallax/parallax01.png" type="Texture" id=8]
+[ext_resource path="res://parallax/parallax02.png" type="Texture" id=9]
+[ext_resource path="res://parallax/casas.png" type="Texture" id=10]
 
 [node name="game" type="Node2D"]
 
+transform/pos = Vector2( 0, 21 )
 script/script = ExtResource( 1 )
 leftHousesPath = [ NodePath("house_e1") ]
 rightHousesPath = [ NodePath("house_d1") ]
@@ -16,6 +21,7 @@ periodSpawn = 0
 
 [node name="BG" type="Sprite" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( 300, 225 )
 texture = ExtResource( 2 )
 
@@ -46,5 +52,60 @@ balloon = 2
 [node name="mailbox-sad" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 324.078, 309.005 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+layer = -2
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = true
+
+[node name="BG" type="ParallaxLayer" parent="ParallaxBackground"]
+
+motion/scale = Vector2( 1, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+
+[node name="BG" type="Sprite" parent="ParallaxBackground/BG"]
+
+texture = ExtResource( 7 )
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
+
+motion/scale = Vector2( 1, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+
+[node name="BG" type="Sprite" parent="ParallaxBackground/ParallaxLayer1"]
+
+texture = ExtResource( 8 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+motion/scale = Vector2( 1, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+
+[node name="BG" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+
+texture = ExtResource( 9 )
+centered = false
+
+[node name="Casas" type="ParallaxLayer" parent="ParallaxBackground"]
+
+motion/scale = Vector2( 1, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+
+[node name="BG" type="Sprite" parent="ParallaxBackground/Casas"]
+
+texture = ExtResource( 10 )
+centered = false
 
 
