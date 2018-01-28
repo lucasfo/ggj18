@@ -1,7 +1,7 @@
 extends RichTextLabel
 
-onready var timer = get_parent().get_child(5)
-onready var stringPrinted = "An evil corporation ruled by a cat is trying to destroy all the happiness and good feelings spread by the dogs. Your mission is to transmit the bad feelings to the dogs, destroying them."
+onready var timer = get_parent().get_child(6)
+onready var stringPrinted = "Hey! Listen up you lazybones! Time to work!\nThe dog village has been too happy lately…\nTHAT’S UNACCEPTABLE! We demons despise happiness! And dogs! And most of all GOOD VIBES!\nYour job is to transmit bad vibes to those awful barkers.\nDO IT FAST OR I’LL FIRE YOU!"
 
 func _ready():
 	timer.set_wait_time(.1) # Time between letters
