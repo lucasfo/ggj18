@@ -1,17 +1,42 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://house/house.gd" type="Script" id=1]
+[ext_resource path="res://house/house-bar.tex" type="Texture" id=2]
+[ext_resource path="res://sounds/acertacasa.smp" type="Sample" id=3]
+[ext_resource path="res://sounds/erracasa.smp" type="Sample" id=4]
+[ext_resource path="res://sounds/spawnbalao.smp" type="Sample" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 35.8042, 28.1732 )
 
+[sub_resource type="SampleLibrary" id=2]
+
+samples/acertacasa = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
+samples/erracasa = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 4 )
+}
+samples/spawnbalao = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 5 )
+}
+
 [node name="house" type="Area2D"]
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1.61756, 0, 0, 1, 0.130981, -0.397209 )
+shapes/0/transform = Matrix32( 1.61756, 0, 0, 2.01221, 0.130981, 31.1567 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -29,10 +54,37 @@ houseLeft = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( 0.130981, -0.397209 )
-transform/scale = Vector2( 1.61756, 1 )
+transform/pos = Vector2( 0.130981, 31.1567 )
+transform/scale = Vector2( 1.61756, 2.01221 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+
+[node name="EmptyBar" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0.527039, -44.0079 )
+texture = ExtResource( 2 )
+hframes = 2
+
+[node name="FullBar" type="Sprite" parent="."]
+
+transform/pos = Vector2( -49.4754, -46.5074 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 2
+frame = 1
+region = true
+region_rect = Rect2( 100, 0, 5, 5 )
+
+[node name="SamplePlayer2D" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 2 )
+config/pitch_random = 0.0
 
 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://gui/menuvermelho.png" type="Texture" id=1]
 [ext_resource path="res://gui/04B_03__.fnt" type="BitmapFont" id=2]
 [ext_resource path="res://scenes/Buttons/BackButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://sounds/music.tscn" type="PackedScene" id=4]
 
 [node name="Credits" type="Node2D"]
 
@@ -61,7 +60,5 @@ lines_skipped = 0
 max_lines_visible = -1
 
 [node name="BackButton" parent="." instance=ExtResource( 3 )]
-
-[node name="SamplePlayer2D" parent="." instance=ExtResource( 4 )]
 
 
