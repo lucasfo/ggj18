@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://scenes/game/game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/game/full_bg.png" type="Texture" id=2]
@@ -10,9 +10,8 @@
 [ext_resource path="res://parallax/parallax02.png" type="Texture" id=8]
 [ext_resource path="res://parallax/casas.png" type="Texture" id=9]
 [ext_resource path="res://gui/Bar/bar.tscn" type="PackedScene" id=10]
-[ext_resource path="res://sounds/music.tscn" type="PackedScene" id=11]
-[ext_resource path="res://sounds/storm-thunder.wav" type="Sample" id=12]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sounds/storm-thunder.wav" type="Sample" id=11]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=12]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -20,7 +19,7 @@ samples/thunder = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 12 )
+"sample": ExtResource( 11 )
 }
 
 [node name="game" type="Node2D"]
@@ -196,9 +195,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="music" parent="." instance=ExtResource( 11 )]
-
-[node name="thunder" type="SamplePlayer2D" parent="."]
+[node name="Sounds" type="SamplePlayer2D" parent="."]
 
 params/volume_db = 0.0
 params/pitch_scale = 1.0
@@ -209,7 +206,7 @@ config/polyphony = 1
 config/samples = SubResource( 1 )
 config/pitch_random = 0.0
 
-[node name="Player" parent="." instance=ExtResource( 13 )]
+[node name="Player" parent="." instance=ExtResource( 12 )]
 
 transform/pos = Vector2( 286.229, 286.108 )
 

@@ -104,6 +104,7 @@ func _input(event):
 	if event.is_action_pressed("interact"):
 		if(colType!=COLTYPE.NONE):
 			if(colType==COLTYPE.MAILBOX):
+				get_node("SamplePlayer2D").play("pegabalao")
 				actualBalloon = sceneBalloon.instance()
 				actualBalloon.set_pos(Vector2(0,-40))
 				actualBalloon.setPlayerTypeSide(colInfo,isLeft)

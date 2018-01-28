@@ -108,10 +108,13 @@ func receiveBalloon(type):
 	if balloons.size() > 0:
 		if checkBalloon(type):
 			removeBalloon()
+			get_node("SamplePlayer2D").play("acertacasa")
 			return true
 		else:
+			get_node("SamplePlayer2D").play("erracasa")
 			return false
 	else:
+		get_node("SamplePlayer2D").play("erracasa")
 		return false
 	pass
 	
