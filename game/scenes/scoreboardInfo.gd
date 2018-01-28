@@ -33,3 +33,13 @@ func enterNewScore(score):
 				newPosition = 3
 		elif(score < score3):
 			newPosition = 4
+
+func show():
+	print(player1)
+	print(score1)
+	print(player2)
+	print(score2)
+	print(player3)
+	print(score3)
+	print(player4)
+	print(score4)
