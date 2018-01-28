@@ -67,7 +67,7 @@ func houseHandler(houseId, houseLeft, houseScore, houseRage, time, remainingBall
 			houses[0].receiveAura(time)
 
 		
-		#updateHardness()
+		updateHardness()
 		#Can lead to bugs and division by zero
 		#with high hardness	
 		get_node("CanvasLayer/score").set_text( "Score: " + str(score))
@@ -92,8 +92,8 @@ func updateRage():
 	get_node("CanvasLayer/bar").updateRage(rage)
 
 func updateHardness():
-	if score > 150*hardness*hardness:
-		hardness += 1
+	if score > 150/(hardness*hardness):
+		hardness *= 0.9
 		for house in leftHouses:
 			house.adjustHardness(hardness)
 		for house in rightHouses:

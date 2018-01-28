@@ -1,8 +1,19 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://gui/Cutscenes/end.png" type="Texture" id=1]
 [ext_resource path="res://scenes/animatedTextEnd.gd" type="Script" id=2]
-[ext_resource path="res://scenes/Buttons/ContinueButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sounds/texto.smp" type="Sample" id=3]
+[ext_resource path="res://scenes/Buttons/ContinueButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gui/ButtonSound.tscn" type="PackedScene" id=5]
+
+[sub_resource type="SampleLibrary" id=1]
+
+samples/texto = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
 
 [node name="DieScene" type="Node2D"]
 
@@ -35,7 +46,20 @@ visible_characters = -1
 percent_visible = 1.0
 script/script = ExtResource( 2 )
 
-[node name="ContinueButton" parent="." instance=ExtResource( 3 )]
+[node name="SamplePlayer2D" type="SamplePlayer2D" parent="Text"]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 1 )
+config/pitch_random = 0.0
+
+[node name="ContinueButton" parent="." instance=ExtResource( 4 )]
+
+[node name="ButtonSound" parent="ContinueButton" instance=ExtResource( 5 )]
 
 [node name="Timer" type="Timer" parent="."]
 
