@@ -67,6 +67,4 @@ max_lines_visible = -1
 
 [node name="SamplePlayer2D" parent="." instance=ExtResource( 5 )]
 
-[node name="ButtonSound" parent="BackButton" instance=ExtResource( 4 )]
-
 

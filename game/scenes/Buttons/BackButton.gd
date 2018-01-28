@@ -5,7 +5,7 @@ func _ready():
 	pass
 
 func backButtonPressed():
-	get_node("ButtonSound").play("botao")
+	get_node("/root/music").get_node("ButtonSound").play("botao")
 	var sceneName = get_tree().get_current_scene().get_name()
 	if(sceneName == "CutScene" or sceneName == "Credits" or sceneName == "Scoreboard"):
 		get_tree().change_scene("res://scenes/menu.tscn")

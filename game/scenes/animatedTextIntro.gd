@@ -1,6 +1,6 @@
 extends RichTextLabel
 
-onready var timer = get_parent().get_child(6)
+onready var timer = get_parent().get_node("Timer")
 onready var stringPrinted = "Hey! Listen up you lazybones! Time to work!\nThe dog village has been too happy lately…\nTHAT’S UNACCEPTABLE! We demons despise happiness! And dogs! And most of all GOOD VIBES!\nYour job is to transmit bad vibes to those awful barkers.\nDO IT FAST OR I’LL FIRE YOU!"
 
 func _ready():

@@ -8,7 +8,7 @@ func _ready():
 	pass
 
 func continueButtonPressed():
-	get_node("ButtonSound").play("botao")
+	get_node("/root/music").get_node("ButtonSound").play("botao")
 	var sceneName = get_tree().get_current_scene().get_name()
 	if(sceneName == "CutScene"):
 		get_tree().change_scene("res://scenes/HowToPlay.tscn")
