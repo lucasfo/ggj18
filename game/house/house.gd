@@ -21,11 +21,11 @@ export(int) var maxBalloons = 1 # Maximum of balloons possible
 export(int) var houseId = 1
 export(int) var houseLeft = true
 
-var cooldownMin = 0
-var cooldownMax = 0
-var initialTime = 0
+var cooldownMin = 0.0
+var cooldownMax = 0.0
+var initialTime = 0.0
 var score = 0
-var cooldown = 0
+var cooldown = 0.0
 var baseBalloons
 var bonus
 
@@ -113,7 +113,6 @@ func removeBalloon():
 func receiveBalloon(type):
 	if balloons.size() > 0:
 		if checkBalloon(type):
-			print(balloons.size(), "AAAAAAAAAA")
 			removeBalloon()
 			get_node("SamplePlayer2D").play("acertacasa")
 			return true
@@ -127,12 +126,12 @@ func receiveBalloon(type):
 	
 func adjustHardness(hard):
 	hardness = hard
-	initialTime = houseId*base - hardness
-	cooldownMin = initialTime - hardness
+	initialTime = houseId*base*hardness
+	cooldownMin = initialTime*hardness
 	cooldownMax = int(cooldownMin * 1.5)
 
 func calcCooldown():
-	cooldown = (randi()%(cooldownMax - cooldownMin)) + cooldownMin
+	cooldown = (randf()*(cooldownMax - cooldownMin)) + cooldownMin
 	cooldown *= 1000
 	cooldown += OS.get_ticks_msec()
 	
