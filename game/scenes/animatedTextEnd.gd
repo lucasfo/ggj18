@@ -1,7 +1,7 @@
 extends RichTextLabel
 
-onready var timer = get_parent().get_child(3)
-onready var stringPrinted = "CATTOMEPH: At this rate the dogs' vibe will rule and my businees will be ruined! YOU ARE FIRED!!"
+onready var timer = get_parent().get_child(4)
+onready var stringPrinted = "At this rate the dogs' vibe will rule and my businees will be ruined! YOU ARE FIRED!!"
 
 func _ready():
 	timer.set_wait_time(.05) # Time between letters

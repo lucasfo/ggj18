@@ -30,6 +30,21 @@ margin/bottom = 243.0
 texture = ExtResource( 1 )
 stretch_mode = 0
 
+[node name="Cathomet" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 19.0
+margin/top = 228.0
+margin/right = 130.0
+margin/bottom = 242.0
+text = "LORD CATHOMET"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="Text" type="RichTextLabel" parent="."]
 
 focus/ignore_mouse = true
