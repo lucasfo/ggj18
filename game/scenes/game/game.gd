@@ -18,6 +18,9 @@ var score = 0
 var rage = 0
 var hardness = 1
 
+# Scoreboard
+onready var scoreInfo = get_node("/root/scoreboardInfo")
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
