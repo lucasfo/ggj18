@@ -1,5 +1,7 @@
 extends TextureButton
 
+onready var scoreInfo = get_node("/root/scoreboardInfo")
+
 func _ready():
 	self.connect("pressed", self, "continueButtonPressed")
 	pass
@@ -11,4 +13,7 @@ func continueButtonPressed():
 	elif(sceneName == "HowToPlay"):
 		get_tree().change_scene("res://scenes/game/game.tscn")
 	elif(sceneName == "DieScene"):
-			get_tree().change_scene("res://scenes/menu.tscn")
+			if(scoreInfo.newPosition > 0):
+				get_tree().change_scene("res://scenes/enterNewName.tscn")
+			elif(scoreInfo.newPosition == 0):
+				get_tree().change_scene("res://scenes/menu.tscn")
