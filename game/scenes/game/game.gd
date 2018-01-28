@@ -83,6 +83,7 @@ func balloonHandler(houseId, houseLeft, balloon):
 		
 
 func endGame():
+	scoreInfo.enterNewScore(score)
 	get_tree().change_scene("res://scenes/dieScene.tscn")
 	pass
 

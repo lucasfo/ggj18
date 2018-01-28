@@ -14,6 +14,7 @@ var score4 = 0
 
 var newScore = 0
 var newPosition = 0
+var newName = ""
 
 func enterNewScore(score):
 	if(score > score4):
