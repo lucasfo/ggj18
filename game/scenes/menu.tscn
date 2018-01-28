@@ -89,4 +89,3 @@ script/script = ExtResource( 11 )
 
 [node name="SamplePlayer2D" parent="." instance=ExtResource( 12 )]
 
-
