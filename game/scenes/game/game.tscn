@@ -35,12 +35,12 @@ initialOffset = -80
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 287.023, 304.902 )
+transform/pos = Vector2( 287.023, 283.725 )
 
 [node name="mailbox-broken" parent="." instance=ExtResource( 5 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 250.218, 309.005 )
+transform/pos = Vector2( 248.002, 289.06 )
 balloon = 2
 
 [node name="balloon1" parent="mailbox-broken" instance=ExtResource( 6 )]
@@ -51,7 +51,7 @@ frame = 4
 [node name="mailbox-sad" parent="." instance=ExtResource( 5 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 324.078, 309.005 )
+transform/pos = Vector2( 321.862, 289.06 )
 
 [node name="balloon" parent="mailbox-sad" instance=ExtResource( 6 )]
 
