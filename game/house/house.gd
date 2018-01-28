@@ -27,6 +27,7 @@ var initialTime = 0
 var score = 0
 var cooldown = 0
 var baseBalloons
+var bonus
 
 signal house_end
 
@@ -40,13 +41,14 @@ func _ready():
 	set_process(true)
 	balloons = []
 	timer = initialTime* 1000
+	bonus=0
 	randomize()
 	pass
 
 func _process(delta):
 	var ticks =  OS.get_ticks_msec()
 	if active:
-		var newWidth = int((float(ticks-(timer - initialTime*1000))/float(initialTime*1000))*100)
+		var newWidth = int((float(ticks-(timer - initialTime*1000))/float(initialTime*1000 + bonus))*100)
 		get_node("FullBar").set_region_rect(Rect2(100,0,newWidth, 5))
 	if cooldown < ticks && not active:
 		active = true
@@ -73,16 +75,19 @@ func spawnBalloon():
 		balloon.set_pos(Vector2(0, initialOffset + balloons.size()*10))
 	baseBalloons = nBalloons
 	timer = OS.get_ticks_msec() + initialTime*1000
+	get_node("SamplePlayer2D").play("spawnbalao")
 	pass
 
 func receiveAura(auraTime):
-	if active:
-		timer += auraTime
+	#if active:
+	#	timer += auraTime
+	#	bonus += auraTime
 	pass
 
 func sendAura():
 	get_node("FullBar").set_region_rect(Rect2(100,0,0, 5))
 	print("Morre balao")
+	bonus=0
 	calcCooldown()
 	for balloon in balloons:
 		remove_child(balloon)
@@ -90,6 +95,7 @@ func sendAura():
 	var score = (baseBalloons * hardness) + int(timer/1000)
 	var rage = balloons.size() * 5
 	emit_signal("house_end", houseId, houseLeft, score, rage, int(timer), balloons.size())
+	balloons.clear()
 	# send aura to neighboors
 	pass
 
@@ -107,6 +113,7 @@ func removeBalloon():
 func receiveBalloon(type):
 	if balloons.size() > 0:
 		if checkBalloon(type):
+			print(balloons.size(), "AAAAAAAAAA")
 			removeBalloon()
 			get_node("SamplePlayer2D").play("acertacasa")
 			return true

@@ -47,12 +47,12 @@ func _ready():
 func houseHandler(houseId, houseLeft, houseScore, houseRage, time, remainingBalloons):
 	if remainingBalloons > 0:
 		rage += houseRage
-		get_node("Sounds").play("thunder").play("thunder")
+		print("ue")
+		get_node("Sounds").play("thunder")
 		updateRage()
 		if rage >= 100:
 			endGame()
 	else:
-		get_node("Sounds").play("acertacasa")
 		score += houseScore
 		var houses
 		if houseLeft:

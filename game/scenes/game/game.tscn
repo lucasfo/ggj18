@@ -10,7 +10,7 @@
 [ext_resource path="res://parallax/parallax02.png" type="Texture" id=8]
 [ext_resource path="res://parallax/casas.png" type="Texture" id=9]
 [ext_resource path="res://gui/Bar/bar.tscn" type="PackedScene" id=10]
-[ext_resource path="res://sounds/storm-thunder.wav" type="Sample" id=11]
+[ext_resource path="res://sounds/trovao.smp" type="Sample" id=11]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=12]
 
 [sub_resource type="SampleLibrary" id=1]
@@ -197,6 +197,7 @@ max_lines_visible = -1
 
 [node name="Sounds" type="SamplePlayer2D" parent="."]
 
+transform/pos = Vector2( 292.411, -12.635 )
 params/volume_db = 0.0
 params/pitch_scale = 1.0
 params/attenuation/min_distance = 1.0
