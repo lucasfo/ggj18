@@ -16,6 +16,7 @@ var rightHouses
 
 var score = 0
 var rage = 0
+var hardness = 1
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -57,16 +58,14 @@ func houseHandler(houseId, houseLeft, houseScore, houseRage, time, remainingBall
 
 		if houseId == 1:
 			if houses.size() > 1:
-				houses[2].receiveAura(time)
-		elif houseId == 5:
-			houses[4].receiveAura(time)
-		else:
-			houses[houseId -1].receiveAura(time)
-			if houses[houseId +1] && houses.size() > houseId:
-				houses[houseId +1].receiveAura(time)
+				houses[1].receiveAura(time)
+		elif houseId == 2:
+			houses[0].receiveAura(time)
 
 		
-			
+		#updateHardness()
+		#Can lead to bugs and division by zero
+		#with high hardness	
 		get_node("CanvasLayer/score").set_text( "Score: " + str(score))
 	pass
 
@@ -86,3 +85,11 @@ func endGame():
 
 func updateRage():
 	get_node("CanvasLayer/bar").updateRage(rage)
+
+func updateHardness():
+	if score > 150*hardness*hardness:
+		hardness += 1
+		for house in leftHouses:
+			house.adjustHardness(hardness)
+		for house in rightHouses:
+			house.adjustHardness(hardness)

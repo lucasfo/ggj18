@@ -12,7 +12,7 @@ var timer
 enum { SADFACE, SMILE, BROKEN, HEARTH }
 
 export (int) var hardness = 1
-export (int) var base = 12
+export (int) var base = 9
 
 export(int) var initialOffset = 0
 export(int) var offset  = 0 # space between balloons

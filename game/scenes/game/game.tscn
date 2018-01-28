@@ -23,8 +23,8 @@ samples/thunder = {
 
 transform/pos = Vector2( 0, 21 )
 script/script = ExtResource( 1 )
-leftHousesPath = [ NodePath("house_e1") ]
-rightHousesPath = [ NodePath("house_d1") ]
+leftHousesPath = [ NodePath("house_e1"), NodePath("house_e2") ]
+rightHousesPath = [ NodePath("house_d1"), NodePath("house_d2") ]
 periodSpawn = 0
 
 [node name="BG" type="Sprite" parent="."]
@@ -38,10 +38,23 @@ transform/pos = Vector2( 533.937, 293.097 )
 initialOffset = -100
 houseLeft = 0
 
+[node name="house_d2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 679.526, 274.642 )
+initialOffset = -100
+houseId = 2
+houseLeft = 0
+
 [node name="house_e1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 41.5247, 294.593 )
 initialOffset = -80
+
+[node name="house_e2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -99.963, 272.037 )
+initialOffset = -80
+houseId = 2
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 
