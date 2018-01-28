@@ -43,6 +43,7 @@ func _ready():
 func houseHandler(houseId, houseLeft, houseScore, houseRage, time, remainingBalloons):
 	if remainingBalloons > 0:
 		rage += houseRage
+		get_node("thunder").play("thunder")
 		updateRage()
 		if rage >= 100:
 			endGame()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://scenes/game/game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/game/full_bg.png" type="Texture" id=2]
@@ -8,6 +8,16 @@
 [ext_resource path="res://balloon/balloon.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gui/Bar/bar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sounds/music.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sounds/storm-thunder.wav" type="Sample" id=9]
+
+[sub_resource type="SampleLibrary" id=1]
+
+samples/thunder = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 9 )
+}
 
 [node name="game" type="Node2D"]
 
@@ -85,6 +95,17 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="SamplePlayer2D" parent="." instance=ExtResource( 8 )]
+[node name="music" parent="." instance=ExtResource( 8 )]
+
+[node name="thunder" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 1 )
+config/pitch_random = 0.0
 
 
