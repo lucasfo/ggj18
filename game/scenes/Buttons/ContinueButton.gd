@@ -3,6 +3,7 @@ extends TextureButton
 onready var scoreInfo = get_node("/root/scoreboardInfo")
 
 func _ready():
+	scoreInfo.show()
 	self.connect("pressed", self, "continueButtonPressed")
 	pass
 

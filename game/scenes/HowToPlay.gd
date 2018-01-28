@@ -5,6 +5,7 @@ var pressed = false
 var second = preload("res://scenes/Tutorial/TutorialTwo.tscn")
 var third = preload("res://scenes/Tutorial/TutorialThree.tscn")
 var fourth = preload("res://scenes/Tutorial/TutorialFour.tscn")
+onready var scoreInfo = get_node("/root/scoreboardInfo")
 
 func _ready():
 	set_process(true)
