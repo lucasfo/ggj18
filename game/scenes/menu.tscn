@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://gui/menuazul.png" type="Texture" id=1]
 [ext_resource path="res://gui/Start Game/start.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://gui/Scoreboard/scoreboard.png" type="Texture" id=8]
 [ext_resource path="res://gui/Scoreboard/scoreboardclick.png" type="Texture" id=9]
 [ext_resource path="res://scenes/scoreboardButton.gd" type="Script" id=10]
+[ext_resource path="res://sounds/music.tscn" type="PackedScene" id=11]
 
 [node name="Menu" type="Node2D"]
 
@@ -82,5 +83,7 @@ textures/pressed = ExtResource( 9 )
 params/resize_mode = 0
 params/stretch_mode = 0
 script/script = ExtResource( 10 )
+
+[node name="SamplePlayer2D" parent="." instance=ExtResource( 11 )]
 
 

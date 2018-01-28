@@ -88,7 +88,6 @@ func sendAura():
 	pass
 
 func removeBalloon():
-	print("KSJHKJH")
 	var balloon = balloons.front()
 	remove_child(balloon)
 	balloon.queue_free()
