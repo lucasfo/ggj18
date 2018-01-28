@@ -34,6 +34,7 @@ func _ready():
 	get_node("Player").connect("drop_balloon", self, "balloonHandler")
 	
 	updateRage()
+	get_node("CanvasLayer/score").text = "Score:  0";
 
 	score = 0
 	rage = 0
@@ -62,7 +63,10 @@ func houseHandler(houseId, houseLeft, houseScore, houseRage, time, remainingBall
 			houses[houseId -1].receiveAura(time)
 			if houses[houseId +1] && houses.size() > houseId:
 				houses[houseId +1].receiveAura(time)
+
+		
 			
+		get_node("CanvasLayer/score").set_text( "Score: " + str(score))
 	pass
 
 func balloonHandler(houseId, houseLeft, balloon):
@@ -80,4 +84,4 @@ func endGame():
 	pass
 
 func updateRage():
-	get_node("bar").updateRage(rage)
+	get_node("CanvasLayer/bar").updateRage(rage)

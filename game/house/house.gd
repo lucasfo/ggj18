@@ -81,7 +81,7 @@ func sendAura():
 	for balloon in balloons:
 		remove_child(balloon)
 		balloon.queue_free()
-	var score = (baseBalloons * hardness) + int(timer)
+	var score = (baseBalloons * hardness) + int(timer/1000)
 	var rage = balloons.size() * 5
 	emit_signal("house_end", houseId, houseLeft, score, rage, int(timer), balloons.size())
 	# send aura to neighboors

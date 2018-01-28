@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://gui/Bar/bar.gd" type="Script" id=1]
 [ext_resource path="res://gui/Bar/life-bar.png" type="Texture" id=2]
+[ext_resource path="res://gui/Bar/cathomet-anim1-sheet.png" type="Texture" id=3]
 
 [node name="bar" type="Node2D"]
 
@@ -21,5 +22,11 @@ hframes = 2
 frame = 1
 region = true
 region_rect = Rect2( 128, 0, 10, 20 )
+
+[node name="cat" type="Sprite" parent="."]
+
+transform/pos = Vector2( -99.3237, -3.16469 )
+texture = ExtResource( 3 )
+hframes = 5
 
 

@@ -1,15 +1,12 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://scenes/game/game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/game/full_bg.png" type="Texture" id=2]
 [ext_resource path="res://house/house.tscn" type="PackedScene" id=3]
-[ext_resource path="res://gui/Bar/bar.tscn" type="PackedScene" id=4]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://mailbox/mailbox.tscn" type="PackedScene" id=6]
-[ext_resource path="res://parallax/background.png" type="Texture" id=7]
-[ext_resource path="res://parallax/parallax01.png" type="Texture" id=8]
-[ext_resource path="res://parallax/parallax02.png" type="Texture" id=9]
-[ext_resource path="res://parallax/casas.png" type="Texture" id=10]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mailbox/mailbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://balloon/balloon.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gui/Bar/bar.tscn" type="PackedScene" id=7]
 
 [node name="game" type="Node2D"]
 
@@ -21,8 +18,7 @@ periodSpawn = 0
 
 [node name="BG" type="Sprite" parent="."]
 
-visibility/visible = false
-transform/pos = Vector2( 300, 225 )
+transform/pos = Vector2( 298.68, 204.86 )
 texture = ExtResource( 2 )
 
 [node name="house_d1" parent="." instance=ExtResource( 3 )]
@@ -36,76 +32,56 @@ houseLeft = 0
 transform/pos = Vector2( 41.5247, 294.593 )
 initialOffset = -80
 
-[node name="bar" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 274.594, 66.5807 )
-
-[node name="Player" parent="." instance=ExtResource( 5 )]
+[node name="Player" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 287.023, 304.902 )
 
-[node name="mailbox-broken" parent="." instance=ExtResource( 6 )]
+[node name="mailbox-broken" parent="." instance=ExtResource( 5 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 250.218, 309.005 )
 balloon = 2
 
-[node name="mailbox-sad" parent="." instance=ExtResource( 6 )]
+[node name="balloon1" parent="mailbox-broken" instance=ExtResource( 6 )]
 
+transform/pos = Vector2( -22.9383, -51.88 )
+frame = 4
+
+[node name="mailbox-sad" parent="." instance=ExtResource( 5 )]
+
+editor/display_folded = true
 transform/pos = Vector2( 324.078, 309.005 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="balloon" parent="mailbox-sad" instance=ExtResource( 6 )]
 
-layer = -2
+transform/pos = Vector2( 21.5226, -50.0427 )
+frame = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
-scroll/offset = Vector2( 0, 0 )
-scroll/base_offset = Vector2( 0, 0 )
-scroll/base_scale = Vector2( 1, 1 )
-scroll/limit_begin = Vector2( 0, 0 )
-scroll/limit_end = Vector2( 0, 0 )
-scroll/ignore_camera_zoom = true
 
-[node name="BG" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="bar" parent="CanvasLayer" instance=ExtResource( 7 )]
 
-motion/scale = Vector2( 1, 1 )
-motion/offset = Vector2( 0, 0 )
-motion/mirroring = Vector2( 0, 0 )
+transform/pos = Vector2( 137.936, 43.4569 )
 
-[node name="BG" type="Sprite" parent="ParallaxBackground/BG"]
+[node name="score" type="Label" parent="CanvasLayer"]
 
-texture = ExtResource( 7 )
-
-[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
-
-motion/scale = Vector2( 1, 1 )
-motion/offset = Vector2( 0, 0 )
-motion/mirroring = Vector2( 0, 0 )
-
-[node name="BG" type="Sprite" parent="ParallaxBackground/ParallaxLayer1"]
-
-texture = ExtResource( 8 )
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-
-motion/scale = Vector2( 1, 1 )
-motion/offset = Vector2( 0, 0 )
-motion/mirroring = Vector2( 0, 0 )
-
-[node name="BG" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
-
-texture = ExtResource( 9 )
-centered = false
-
-[node name="Casas" type="ParallaxLayer" parent="ParallaxBackground"]
-
-motion/scale = Vector2( 1, 1 )
-motion/offset = Vector2( 0, 0 )
-motion/mirroring = Vector2( 0, 0 )
-
-[node name="BG" type="Sprite" parent="ParallaxBackground/Casas"]
-
-texture = ExtResource( 10 )
-centered = false
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 518.0
+margin/top = 9.0
+margin/right = 569.0
+margin/bottom = 40.0
+text = "Score: 0
+"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 

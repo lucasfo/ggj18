@@ -74,6 +74,11 @@ func _fixed_process(delta):
 			actualBalloon.setPlayerTypeSide(2,isLeft)
 		else:
 			actualBalloon.setPlayerTypeSide(0,isLeft)
+	var pos = get_node(".").get_pos()
+	if pos.x > 730:
+		get_node(".").set_pos(Vector2(729, pos.y))
+	if pos.x < -180:
+		get_node(".").set_pos(Vector2(-179, pos.y))
 	move(movement * playerSpeed * delta)
 	### end MOVEMENT
 	pass
