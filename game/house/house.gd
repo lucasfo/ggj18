@@ -33,16 +33,21 @@ signal house_end
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+	get_node("FullBar").set_region_rect(Rect2(100,0,0,0))
 	active = false
 	adjustHardness(hardness)
 	calcCooldown()
 	set_process(true)
 	balloons = []
 	timer = initialTime* 1000
+	randomize()
 	pass
 
 func _process(delta):
 	var ticks =  OS.get_ticks_msec()
+	if active:
+		var newWidth = int((float(ticks-(timer - initialTime*1000))/float(initialTime*1000))*100)
+		get_node("FullBar").set_region_rect(Rect2(100,0,newWidth, 5))
 	if cooldown < ticks && not active:
 		active = true
 		spawnBalloon()
@@ -65,9 +70,9 @@ func spawnBalloon():
 		balloons.append(balloon)
 		balloon.setType(balloonType)
 		add_child(balloon)
-		balloon.set_pos(Vector2(0, initialOffset))
+		balloon.set_pos(Vector2(0, initialOffset + balloons.size()*10))
 	baseBalloons = nBalloons
-	timer = OS.get_ticks_msec() + initialTime*1000		
+	timer = OS.get_ticks_msec() + initialTime*1000
 	pass
 
 func receiveAura(auraTime):
@@ -76,6 +81,7 @@ func receiveAura(auraTime):
 	pass
 
 func sendAura():
+	get_node("FullBar").set_region_rect(Rect2(100,0,0, 5))
 	print("Morre balao")
 	calcCooldown()
 	for balloon in balloons:

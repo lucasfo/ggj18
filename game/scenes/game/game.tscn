@@ -1,14 +1,18 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://scenes/game/game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/game/full_bg.png" type="Texture" id=2]
 [ext_resource path="res://house/house.tscn" type="PackedScene" id=3]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://mailbox/mailbox.tscn" type="PackedScene" id=5]
-[ext_resource path="res://balloon/balloon.tscn" type="PackedScene" id=6]
-[ext_resource path="res://gui/Bar/bar.tscn" type="PackedScene" id=7]
-[ext_resource path="res://sounds/music.tscn" type="PackedScene" id=8]
-[ext_resource path="res://sounds/storm-thunder.wav" type="Sample" id=9]
+[ext_resource path="res://mailbox/mailbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://balloon/balloon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://parallax/background.png" type="Texture" id=6]
+[ext_resource path="res://parallax/parallax01.png" type="Texture" id=7]
+[ext_resource path="res://parallax/parallax02.png" type="Texture" id=8]
+[ext_resource path="res://parallax/casas.png" type="Texture" id=9]
+[ext_resource path="res://gui/Bar/bar.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sounds/music.tscn" type="PackedScene" id=11]
+[ext_resource path="res://sounds/storm-thunder.wav" type="Sample" id=12]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=13]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -16,7 +20,7 @@ samples/thunder = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 9 )
+"sample": ExtResource( 12 )
 }
 
 [node name="game" type="Node2D"]
@@ -29,55 +33,141 @@ periodSpawn = 0
 
 [node name="BG" type="Sprite" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( 298.68, 204.86 )
 texture = ExtResource( 2 )
 
 [node name="house_d1" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 533.937, 293.097 )
+transform/pos = Vector2( 532.132, 226.686 )
 initialOffset = -100
 houseLeft = 0
 
 [node name="house_d2" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 679.526, 274.642 )
+transform/pos = Vector2( 676.819, 251.306 )
 initialOffset = -100
 houseId = 2
 houseLeft = 0
 
 [node name="house_e1" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 41.5247, 294.593 )
+transform/pos = Vector2( 61.1502, 252.663 )
 initialOffset = -80
 
 [node name="house_e2" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( -99.963, 272.037 )
+transform/pos = Vector2( -105.556, 256.675 )
 initialOffset = -80
 houseId = 2
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 287.023, 283.725 )
-
-[node name="mailbox-broken" parent="." instance=ExtResource( 5 )]
+[node name="mailbox-broken" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 248.002, 289.06 )
 balloon = 2
 
-[node name="balloon1" parent="mailbox-broken" instance=ExtResource( 6 )]
+[node name="balloon1" parent="mailbox-broken" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( -22.9383, -51.88 )
 frame = 4
 
-[node name="mailbox-sad" parent="." instance=ExtResource( 5 )]
+[node name="mailbox-sad" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 321.862, 289.06 )
 
-[node name="balloon" parent="mailbox-sad" instance=ExtResource( 6 )]
+[node name="balloon" parent="mailbox-sad" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 21.5226, -50.0427 )
 frame = 1
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+editor/display_folded = true
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = false
+
+[node name="StarsBG" type="ParallaxLayer" parent="ParallaxBackground"]
+
+motion/scale = Vector2( 0.2, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/StarsBG"]
+
+transform/pos = Vector2( 297.922, 225.823 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
+
+motion/scale = Vector2( 0.4, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer1"]
+
+transform/pos = Vector2( 298.32, 226.22 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+motion/scale = Vector2( 0.7, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+
+transform/pos = Vector2( 297.922, 225.823 )
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Houses" type="ParallaxLayer" parent="ParallaxBackground"]
+
+motion/scale = Vector2( 1, 1 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Houses"]
+
+transform/pos = Vector2( 298.319, 225.823 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Ground" type="Sprite" parent="."]
+
+transform/pos = Vector2( 297.764, 364.438 )
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 0, 320, 1000, 130 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -86,7 +176,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 
-[node name="bar" parent="CanvasLayer" instance=ExtResource( 7 )]
+[node name="bar" parent="CanvasLayer" instance=ExtResource( 10 )]
 
 transform/pos = Vector2( 137.936, 43.4569 )
 
@@ -106,7 +196,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="music" parent="." instance=ExtResource( 8 )]
+[node name="music" parent="." instance=ExtResource( 11 )]
 
 [node name="thunder" type="SamplePlayer2D" parent="."]
 
@@ -118,5 +208,9 @@ params/attenuation/distance_exp = 1.0
 config/polyphony = 1
 config/samples = SubResource( 1 )
 config/pitch_random = 0.0
+
+[node name="Player" parent="." instance=ExtResource( 13 )]
+
+transform/pos = Vector2( 286.229, 286.108 )
 
 

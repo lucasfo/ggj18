@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 ### anim
-enum ANIM{idle=0, walkl, walkr}
+enum ANIM{idle=0, walkl, walkr, hide}
 var animId
 
 ### movement
@@ -52,7 +52,8 @@ func _fixed_process(delta):
 	if( Input.is_action_pressed("ui_down") and !isHiding):
 		isHidingTime = OS.get_ticks_msec()
 		isHiding=true
-		get_node("AnimationPlayer").play("Idle")
+		get_node("AnimationPlayer").play("Hide")
+		animId=ANIM.hide
 		move(Vector2(0,1)*50)
 		return
 		
