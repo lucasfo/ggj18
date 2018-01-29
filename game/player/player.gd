@@ -38,24 +38,24 @@ func _ready():
 func _fixed_process(delta):
 	
 	### begin MOVEMENT
-	if( isHiding and OS.get_ticks_msec() - isHidingTime>800):
-		isHiding=false
-		move(Vector2(0,-1)*50)
-	elif (isHiding):
-		return
+	#if( isHiding and OS.get_ticks_msec() - isHidingTime>800):
+	#	isHiding=false
+	#	move(Vector2(0,-1)*50)
+	#elif (isHiding):
+	#	return
 	
 	var movement = Vector2(0,0)
 	if( Input.is_action_pressed("ui_right")):
 		movement.x += 1
 	if( Input.is_action_pressed("ui_left")):
 		movement.x += -1
-	if( Input.is_action_pressed("ui_down") and !isHiding):
-		isHidingTime = OS.get_ticks_msec()
-		isHiding=true
-		get_node("AnimationPlayer").play("Hide")
-		animId=ANIM.hide
-		move(Vector2(0,1)*50)
-		return
+	#if( Input.is_action_pressed("ui_down") and !isHiding):
+	#	isHidingTime = OS.get_ticks_msec()
+	#	isHiding=true
+	#	get_node("AnimationPlayer").play("Hide")
+	#	animId=ANIM.hide
+	#	move(Vector2(0,1)*50)
+	#	return
 		
 	if(movement.x==1 and animId!=ANIM.walkr):
 		get_node("AnimationPlayer").play("WalkR")

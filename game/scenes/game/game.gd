@@ -47,7 +47,6 @@ func _ready():
 func houseHandler(houseId, houseLeft, houseScore, houseRage, time, remainingBalloons):
 	if remainingBalloons > 0:
 		rage += houseRage
-		print("ue")
 		get_node("Sounds").play("thunder")
 		updateRage()
 		if rage >= 100:
@@ -92,7 +91,7 @@ func updateRage():
 	get_node("CanvasLayer/bar").updateRage(rage)
 
 func updateHardness():
-	if score > 150/(hardness*hardness):
+	if score > 3/(hardness*hardness):
 		hardness *= 0.9
 		for house in leftHouses:
 			house.adjustHardness(hardness)
